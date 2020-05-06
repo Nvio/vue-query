@@ -12,7 +12,10 @@ import getPosts from "./queries/getPosts";
 
 export default {
   queries: {
-    posts: getPosts
+    posts: {
+      action: getPosts,
+      refetchInterval: 1000
+    }
   },
   data() {
     return {
