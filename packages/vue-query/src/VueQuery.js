@@ -10,12 +10,26 @@ const vueQueryMixin = {
     const _queries = {};
     for (const key in queries) {
       const query = queries[key]
-      _queries[key] = null;
+      _queries[key] = {
+        data: null,
+        error: null,
+        loading: true,
+      };
       const action = typeof query === 'function' ? query : query.action
       const exec = () => {
         action().then(data => {
-          _queries[key] = data
-        }).catch(console.log)
+          _queries[key] = {
+            data,
+            error: null,
+            loading: false,
+          }
+        }).catch(error => {
+          _queries[key] = {
+            data: null,
+            error,
+            loading: false,
+          }
+        })
       }
       if (typeof query === 'object' && query.refetchInterval) {
         setInterval(exec, query.refetchInterval)
