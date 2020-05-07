@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "vue-async-computed": "^3.8.2"
+    "vue": "^2.6.11",
+    "vuex": "^3.3.0"
   }
 }
