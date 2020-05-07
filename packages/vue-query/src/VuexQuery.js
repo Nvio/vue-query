@@ -6,7 +6,9 @@ Vue.config.vuexQuery = true;
 const mapQueries = mapState
 
 const VuexQuery = {
-  state: () => ({}),
+  state: () => ({
+    loaded: 0,
+  }),
   mutations: {
     initQuery(state, queryName) {
       state[queryName] = null
@@ -14,6 +16,7 @@ const VuexQuery = {
 
     setQueryData(state, query) {
       state[query.name] = query.data
+      state.loaded += 1;
     }
   },
   actions: {
@@ -23,7 +26,7 @@ const VuexQuery = {
         commit('initQuery', queryName)
 
         query().then(data => {
-          commit('setQueryData', {
+          dispatch('setQueryData', {
             name: queryName,
             data
           })

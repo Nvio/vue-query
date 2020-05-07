@@ -1,5 +1,11 @@
 const vueQueryMixin = {
+  beforeCreate() {
+    if (this.$store && this.$store.state._queries) {
+      this.$store.dispatch('addQueries', this.$options.queries)
+    }
+  },
   data() {
+    if (this.$store && this.$store.state._queries) return {}
     const { queries } = this.$options;
     const _queries = {};
     for (const key in queries) {
@@ -23,7 +29,7 @@ const vueQueryMixin = {
   },
   computed: {
     $queries() {
-      return this.$data._queries;
+      return this.$store && this.$store.state._queries ? this.$store.state._queries : this.$data._queries;
     }
   },
 }
