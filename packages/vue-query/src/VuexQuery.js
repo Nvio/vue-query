@@ -1,11 +1,8 @@
-import Vue from "vue"
 import { mapState } from "vuex";
-
-Vue.config.vuexQuery = true;
 
 const mapQueries = mapState
 
-const VuexQuery = {
+const VuexQuery = Vue => ({
   state: () => ({}),
   getters: {
     $queries(state) {
@@ -14,7 +11,7 @@ const VuexQuery = {
   },
   mutations: {
     setQuery(state, query) {
-      state[query.name] = query
+      Vue.set(state, query.name, query)
     },
   },
   actions: {
@@ -50,7 +47,7 @@ const VuexQuery = {
       })
     }
   },
-}
+})
 
 export default VuexQuery
 export { VuexQuery, mapQueries };

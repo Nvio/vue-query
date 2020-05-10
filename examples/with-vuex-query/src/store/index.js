@@ -5,5 +5,5 @@ import { VuexQuery } from "../../../../packages/vue-query/src"
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  modules: { _queries: VuexQuery }
+  modules: { _queries: VuexQuery(Vue) }
 })
