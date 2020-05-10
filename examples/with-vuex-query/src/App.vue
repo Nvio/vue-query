@@ -2,7 +2,10 @@
   <div id="app">
     <h1>{{ title}}</h1>
 
-    <other-posts />
+    <p v-if="$queries.posts.loading">Loading...</p>
+    <ul v-else :key="$queries.posts.length">
+      <li v-for="post in $queries.posts.data" :key="post.id">{{ post.title }}</li>
+    </ul>
     <hr />
     <other-posts />
   </div>
