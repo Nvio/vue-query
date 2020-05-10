@@ -1,9 +1,8 @@
 <template>
   <div id="app">
     <h1>{{ title}}</h1>
-    <ul v-if="!$queries.posts.loading">
-      <li v-for="post in $queries.posts.data" :key="post.id">{{ post.title }}</li>
-    </ul>
+
+    <other-posts />
     <hr />
     <other-posts />
   </div>

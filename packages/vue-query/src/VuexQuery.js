@@ -30,12 +30,12 @@ const VuexQuery = {
     },
     runQuery({ dispatch }, { query, queryName }) {
       return query().then(data => {
-        dispatch('setQuery', {
-          data,
-          name: queryName,
-          loading: false,
-          error: null,
-        })
+        // dispatch('setQuery', {
+        //   data,
+        //   name: queryName,
+        //   loading: false,
+        //   error: null,
+        // })
       }).catch(console.log)
     },
     setQuery({ commit }, query) {
