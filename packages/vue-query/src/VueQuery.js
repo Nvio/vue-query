@@ -1,10 +1,12 @@
 const vueQueryMixin = {
   beforeCreate() {
+    // if vuex-query is detected
     if (this.$store && this.$store.getters.$queries) {
       this.$store.dispatch('addQueries', this.$options.queries)
     }
   },
   data() {
+    // if vuex-query is not detected, we setup queries locally to the component
     if (this.$store && this.$store.getters.$queries) return {}
     const { queries } = this.$options;
     const _queries = {};
