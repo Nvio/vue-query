@@ -30,7 +30,7 @@ const VuexQuery = {
     },
     runQuery({ dispatch }, { query, queryName }) {
       return query().then(data => {
-        dispatch('setQuery', {
+        return dispatch('setQuery', {
           data,
           name: queryName,
           loading: false,
